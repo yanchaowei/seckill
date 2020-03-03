@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ycw.seckill.mybatis.mapper.GoodsMapper">
+
+    <!--<resultMap id="userMap" type="com.ycw.seckill.vo.GoodsVo">-->
+        <!--<id property="id" column="id"></id>-->
+        <!--<result property="Name" column="username"></result>-->
+        <!--<result property="birthday" column="birthday"></result>-->
+        <!--<result property="address" column="address"></result>-->
+        <!--<result property="sex" column="sex"></result>-->
+    <!--</resultMap>-->
+    <select id="listGoodsVo" resultType="com.ycw.seckill.vo.GoodsVo" >
+            select g.*,mg.stock_count, mg.start_date, mg.end_date,mg.miaosha_price from miaosha_goods mg left join goods g on mg.goods_id = g.id
+    </select>
+
+    <select id="getByGoodsId" parameterType="Long" resultType="com.ycw.seckill.vo.GoodsVo">
+            select g.*,mg.stock_count, mg.start_date, mg.end_date,mg.miaosha_price
+            from miaosha_goods mg left join goods g on mg.goods_id = g.id
+            WHERE mg.id = #{goodsId}
+    </select>
+
+    <update id="reduceStock" parameterType="com.ycw.seckill.domain.MiaoshaGoods">
+        update miaosha_goods set stock_count = stock_count - 1 where goods_id = #{goodsId} and stock_count > 0
+    </update>
+
+</mapper>

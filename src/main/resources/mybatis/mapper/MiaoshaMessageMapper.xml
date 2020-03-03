@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ycw.seckill.mybatis.mapper.MiaoshaMessageMapper">
+
+    <insert id="insertMiaoshaMessageUser" parameterType="com.ycw.seckill.domain.MiaoShaMessageUser" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        insert into miaosha_message_user (id , userid ,messageid , goodid ,orderid)
+        value (#{id},#{userId},#{messageId},#{goodId},#{orderId})
+    </insert>
+
+    <insert id="insertMiaoshaMessageInfo" parameterType="com.ycw.seckill.domain.MiaoShaMessageInfo" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into miaosha_message (id , messageid ,content , create_time ,status,over_time,message_type ,send_type , good_name , price,messageHead)
+        value (#{id},#{messageId},#{content},#{createTime},#{status},#{overTime},#{messageType},#{sendType},#{goodName},#{price},#{messageHead})
+    </insert>
+
+</mapper>
