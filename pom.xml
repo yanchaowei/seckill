@@ -42,7 +42,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.38</version>
+			<version>1.2.83</version>
 		</dependency>
 
         <!--// 使用布隆过滤器进行请求过滤-->
